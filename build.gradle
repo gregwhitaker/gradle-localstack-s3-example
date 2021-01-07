@@ -1,0 +1,37 @@
+import com.nike.pdm.localstack.aws.s3.CreateS3BucketsTask
+
+plugins {
+    id "java"
+    id "application"
+    id "com.avast.gradle.docker-compose"    version "0.14.0"
+    id "com.nike.pdm.localstack"            version "0.1.0"
+}
+
+// Project Configuration
+group = "com.github.gregwhitaker"
+version = "0.1.0"
+mainClassName = "example.S3ExampleApplication"
+
+// Dependency Management
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "com.amazonaws:aws-java-sdk-s3:1.11.447"
+    implementation "org.slf4j:slf4j-simple:1.7.30"
+    implementation "commons-io:commons-io:2.8.0"
+}
+
+// Docker Compose
+dockerCompose {
+    useComposeFiles = [ 'localstack/localstack-docker-compose.yml' ]
+}
+
+// LocalStack
+task setupS3Buckets(type: CreateS3BucketsTask) {
+    buckets = [
+            'bucket1',
+            'bucket2'
+    ]
+}
