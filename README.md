@@ -1,4 +1,6 @@
 # gradle-localstack-s3-example
+![Build](https://github.com/gregwhitaker/gradle-localstack-s3-example/workflows/Build/badge.svg)
+
 An example of working with mock AWS S3 endpoints using [LocalStack](https://github.com/localstack/localstack) and the [Gradle LocalStack Plugin](https://github.com/Nike-Inc/gradle-localstack).
 
 ## Building the Example
